@@ -65,6 +65,9 @@ export class CurrencyExchangeController extends React.Component<CurrencyConverte
     }
 
     private onChangeAmount = (value: number) => {
+        if (value < 0) {
+            return;
+        }
         this.setState({fromAmount: value});
     };
 }
