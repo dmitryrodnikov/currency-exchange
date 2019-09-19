@@ -1,11 +1,12 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## How to run
 
-## Available Scripts
+1. Add ".env" file to the root folder with following content (Replace 'XXX' with access key from https://fixer.io/signup/free):
+    `REACT_APP_FIXER_ACCESS_KEY=XXX`
 
-In the project directory, you can run:
+2. Run command:
+    
+    `npm start`
 
-### `npm start`
+3. App will be available here: 
 
-### `npm test`
-
-### `npm run build`
+    http://localhost:3000
