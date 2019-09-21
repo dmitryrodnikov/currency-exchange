@@ -3,20 +3,6 @@ import {CurrencyExchange} from '../components/CurrencyExchange/CurrencyExchange'
 import {Currency} from '../domain/Currency';
 
 export class CurrencyExchangeController extends React.Component<CurrencyConverterProps, CurrencyConverterState> {
-    public static convertCurrency(
-        fromCurrency: Currency,
-        toCurrency: Currency,
-        amount: number,
-        currencyRates: Record<Currency, number>,
-    ) {
-        const toCurrencyRate = currencyRates[toCurrency];
-        const fromCurrencyRate = currencyRates[fromCurrency];
-        if (fromCurrencyRate === 0) {
-            return 0;
-        }
-        return Math.floor((toCurrencyRate / fromCurrencyRate) * amount * 100) / 100;
-    }
-
     public state: CurrencyConverterState = {
         fromAmount: 0,
         fromCurrency: Currency.USD,
@@ -30,26 +16,39 @@ export class CurrencyExchangeController extends React.Component<CurrencyConverte
 
     public render(): React.ReactElement {
         const {fromCurrency, toCurrency, fromAmount} = this.state;
-        const {currencyRates} = this.props;
-        const outputAmount = CurrencyExchangeController.convertCurrency(
-            fromCurrency,
-            toCurrency,
-            fromAmount,
-            currencyRates
-        );
+        const fromExchangeRate = this.getExchangeRate(fromCurrency, toCurrency);
+        const toExchangeRate = this.getExchangeRate(toCurrency, fromCurrency);
+        const toAmount = fromExchangeRate * fromAmount;
+        const toAmountFormatted = String(Math.floor(toAmount * 100) / 100);
+        const toExchangeRateFormatted = Math.floor(toExchangeRate * 100) / 100;
+        const fromAmountFormatted = String(fromAmount);
 
         return (
             <CurrencyExchange
                 fromCurrency={fromCurrency}
+                fromAmount={fromAmountFormatted}
                 toCurrency={toCurrency}
-                fromAmount={String(fromAmount)}
-                toAmount={String(outputAmount)}
-                onChangeAmount={this.onChangeAmount}
+                toAmount={toAmountFormatted}
+                toExchangeRate={toExchangeRateFormatted}
                 currencyList={this.getCurrencyList()}
+                onChangeAmount={this.onChangeAmount}
                 onChangeCurrencyFrom={this.changeCurrencyFrom}
                 onChangeCurrencyTo={this.changeCurrencyTo}
             />
         );
+    }
+
+    private getExchangeRate(
+        relationOf: Currency,
+        relationTo: Currency,
+    ): number {
+        const {currencyRates} = this.props;
+        const rateOf = currencyRates[relationTo];
+        const rateTo = currencyRates[relationOf];
+        if (rateTo === 0) {
+            return 0;
+        }
+        return rateOf / rateTo;
     }
 
     private changeCurrencyFrom = (currency: Currency) => {

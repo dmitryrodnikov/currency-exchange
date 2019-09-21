@@ -8,9 +8,10 @@ import {Output} from '../Output/Output';
 
 interface CurrencyExchangeProps {
     fromCurrency: Currency;
-    toCurrency: Currency;
     fromAmount: string;
+    toCurrency: Currency;
     toAmount: string;
+    toExchangeRate: number;
     onChangeAmount: InputChangeHandler,
     onChangeCurrencyFrom: ButtonClickHandler<Currency>;
     onChangeCurrencyTo: ButtonClickHandler<Currency>;
@@ -28,12 +29,11 @@ const StyledCurrencyExchange = styled.div`
 const ExchangeBlock = styled.div`
     display: flex;
     align-items: center;
-    border-bottom: 2px solid #00000010;
     padding: 16px 12px;
     overflow: hidden;
     
-    &:last-child {
-        border-bottom: none;
+    &:first-child {
+        border-bottom: 2px solid #00000010;
     }
 `;
 
@@ -41,6 +41,15 @@ const CurrencyAmount = styled.div`
     margin-left: 20px;
     width: 100%;
     overflow: hidden;
+`;
+
+const ExchangeRate = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding 0 16px;
+    color: #00000080;
+    font-size: 14px;
 `;
 
 export function CurrencyExchange(
@@ -53,8 +62,10 @@ export function CurrencyExchange(
         currencyList,
         fromCurrency,
         toCurrency,
+        toExchangeRate,
     }: CurrencyExchangeProps
 ) {
+    const toExchangeRateFormatted = `1${toCurrency} = ${toExchangeRate}${fromCurrency}`;
     return (
         <StyledCurrencyExchange>
             <ExchangeBlock>
@@ -80,6 +91,7 @@ export function CurrencyExchange(
                     <Output text={toAmount}/>
                 </CurrencyAmount>
             </ExchangeBlock>
+            <ExchangeRate>{toExchangeRateFormatted}</ExchangeRate>
         </StyledCurrencyExchange>
     );
 }
