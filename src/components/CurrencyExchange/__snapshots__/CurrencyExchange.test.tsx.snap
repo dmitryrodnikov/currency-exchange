@@ -1,0 +1,114 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CurrencyExchange Render snapshots are equal 1`] = `
+<div
+  class="sc-ifAKCX bcPcvD"
+>
+  <div
+    class="sc-EHOje bgpvZG"
+  >
+    <div
+      class="sc-htpNat gDqwhI"
+    >
+      <div
+        class="sc-bwzfXH jsrFJT"
+      >
+        USD
+      </div>
+      <div
+        class="sc-bwzfXH bRAeMy"
+      >
+        GBP
+      </div>
+      <div
+        class="sc-bwzfXH bRAeMy"
+      >
+        EUR
+      </div>
+    </div>
+    <div
+      class="sc-bZQynM iSrloL"
+    >
+      <input
+        class="sc-bdVaJa jxLHdN"
+        type="number"
+        value="100"
+      />
+    </div>
+  </div>
+  <div
+    class="sc-EHOje bgpvZG"
+  >
+    <div
+      class="sc-htpNat gDqwhI"
+    >
+      <div
+        class="sc-bwzfXH bRAeMy"
+      >
+        USD
+      </div>
+      <div
+        class="sc-bwzfXH bRAeMy"
+      >
+        GBP
+      </div>
+      <div
+        class="sc-bwzfXH jsrFJT"
+      >
+        EUR
+      </div>
+    </div>
+    <div
+      class="sc-bZQynM iSrloL"
+    >
+      <div
+        class="sc-bxivhb hIASvP"
+      >
+        80
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CurrencyExchange Shallow render snapshots are equal 1`] = `
+<styled.div>
+  <styled.div>
+    <CurrencySelect
+      currencies={
+        Array [
+          "USD",
+          "GBP",
+          "EUR",
+        ]
+      }
+      onItemClick={[Function]}
+      selected="USD"
+    />
+    <styled.div>
+      <Input
+        onChange={[Function]}
+        value="100"
+      />
+    </styled.div>
+  </styled.div>
+  <styled.div>
+    <CurrencySelect
+      currencies={
+        Array [
+          "USD",
+          "GBP",
+          "EUR",
+        ]
+      }
+      onItemClick={[Function]}
+      selected="EUR"
+    />
+    <styled.div>
+      <Output
+        text="80"
+      />
+    </styled.div>
+  </styled.div>
+</styled.div>
+`;
