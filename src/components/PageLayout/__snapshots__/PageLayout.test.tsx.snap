@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageLayout Render snapshots are equal 1`] = `
+<div
+  class="sc-bdVaJa cGCNPj"
+>
+  Test
+</div>
+`;
+
+exports[`PageLayout Shallow render snapshots are equal 1`] = `
+<styled.div>
+  Test
+</styled.div>
+`;
