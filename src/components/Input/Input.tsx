@@ -2,6 +2,7 @@ import * as React from 'react';
 import {ChangeEvent} from 'react';
 import styled from 'styled-components';
 import {COLORS, FONT_SIZE} from '../../constants/Theme';
+import NumberFormat from 'react-number-format';
 
 interface InputProps {
     value: string;
@@ -10,7 +11,7 @@ interface InputProps {
 
 export type InputChangeHandler = (value: number) => void;
 
-const StyledInput = styled.input`
+const StyledInput = styled(NumberFormat)`
     border: none;
     border-radius: 8px;
     padding: 0 8px;
@@ -43,8 +44,9 @@ export class Input extends React.PureComponent<InputProps> {
     public render() {
         return (
             <StyledInput
-                type='number'
                 value={this.props.value}
+                decimalScale={2}
+                allowNegative={false}
                 onChange={this.onChangeHandler}
             />
         );
