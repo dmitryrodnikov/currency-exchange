@@ -5,7 +5,7 @@ import {
     CurrencyExchangeController,
     CurrencyConverterDispatchProps,
     CurrencyConverterStateProps
-} from '../components/CurrencyExchangeController';
+} from '../controllers/CurrencyExchangeController';
 import {rootState} from '../reducers/rootReducer';
 import {Currency} from '../domain/Currency';
 

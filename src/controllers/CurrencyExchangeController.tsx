@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {CurrencyExchange} from './CurrencyExchange/CurrencyExchange';
+import {CurrencyExchange} from '../components/CurrencyExchange/CurrencyExchange';
 import {Currency} from '../domain/Currency';
 
 export class CurrencyExchangeController extends React.Component<CurrencyConverterProps, CurrencyConverterState> {
