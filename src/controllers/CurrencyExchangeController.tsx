@@ -14,7 +14,7 @@ export class CurrencyExchangeController extends React.Component<CurrencyConverte
         if (fromCurrencyRate === 0) {
             return 0;
         }
-        return Math.floor((toCurrencyRate / fromCurrencyRate) * amount * 10) / 10;
+        return Math.floor((toCurrencyRate / fromCurrencyRate) * amount * 100) / 100;
     }
 
     public state: CurrencyConverterState = {
