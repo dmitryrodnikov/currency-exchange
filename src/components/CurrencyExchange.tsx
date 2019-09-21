@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import {Input, InputChangeHandler} from './Input';
+import {Input, InputChangeHandler} from './Input/Input';
 import {CurrencySelect} from './CurrencySelect';
 import {Currency} from '../domain/Currency';
 import {ButtonClickHandler} from './Button/Button';

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {ChangeEvent} from 'react';
 import styled from 'styled-components';
-import {COLORS, FONT_SIZE} from '../constants/Theme';
+import {COLORS, FONT_SIZE} from '../../constants/Theme';
 
 interface InputProps {
     value: string;

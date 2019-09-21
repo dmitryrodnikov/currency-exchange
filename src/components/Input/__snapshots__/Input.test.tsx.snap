@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input Render snapshots are equal 1`] = `
+<input
+  class="sc-bdVaJa jxLHdN"
+  type="number"
+  value="Test"
+/>
+`;
+
+exports[`Input Shallow render snapshots are equal 1`] = `
+<styled.input
+  onChange={[Function]}
+  type="number"
+  value="Test"
+/>
+`;
