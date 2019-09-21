@@ -4,7 +4,7 @@ import {Input, InputChangeHandler} from './Input/Input';
 import {CurrencySelect} from './CurrencySelect';
 import {Currency} from '../domain/Currency';
 import {ButtonClickHandler} from './Button/Button';
-import {Output} from './Output';
+import {Output} from './Output/Output';
 
 interface CurrencyExchangeProps {
     fromCurrency: Currency;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import {FONT_SIZE} from '../constants/Theme';
+import {FONT_SIZE} from '../../constants/Theme';
 
 const StyledOutput = styled.div`
     font-size: ${FONT_SIZE.l};
