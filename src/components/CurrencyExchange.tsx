@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import {Input, InputChangeHandler} from './Input/Input';
-import {CurrencySelect} from './CurrencySelect';
+import {CurrencySelect} from './CurrencySelect/CurrencySelect';
 import {Currency} from '../domain/Currency';
 import {ButtonClickHandler} from './Button/Button';
 import {Output} from './Output/Output';

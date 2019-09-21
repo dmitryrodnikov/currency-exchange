@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import {Currency} from '../domain/Currency';
-import {Button, ButtonClickHandler} from './Button/Button';
+import {Currency} from '../../domain/Currency';
+import {Button, ButtonClickHandler} from '../Button/Button';
 
 const Wrapper = styled.div`
     display: flex;

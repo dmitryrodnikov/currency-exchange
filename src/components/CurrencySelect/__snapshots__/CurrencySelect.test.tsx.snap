@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CurrencySelect Render snapshots are equal 1`] = `
+<div
+  class="sc-bwzfXH cVDcWW"
+>
+  <div
+    class="sc-bdVaJa gMmIAm"
+  >
+    USD
+  </div>
+  <div
+    class="sc-bdVaJa fREQqs"
+  >
+    GBP
+  </div>
+  <div
+    class="sc-bdVaJa fREQqs"
+  >
+    EUR
+  </div>
+</div>
+`;
+
+exports[`CurrencySelect Shallow render snapshots are equal 1`] = `
+<styled.div>
+  <Button
+    active={true}
+    key="USD"
+    onClick={[Function]}
+    value="USD"
+  >
+    USD
+  </Button>
+  <Button
+    active={false}
+    key="GBP"
+    onClick={[Function]}
+    value="GBP"
+  >
+    GBP
+  </Button>
+  <Button
+    active={false}
+    key="EUR"
+    onClick={[Function]}
+    value="EUR"
+  >
+    EUR
+  </Button>
+</styled.div>
+`;
