@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {Input, InputChangeHandler} from './Input';
 import {CurrencySelect} from './CurrencySelect';
 import {Currency} from '../domain/Currency';
-import {ButtonClickHandler} from './Button';
+import {ButtonClickHandler} from './Button/Button';
 import {Output} from './Output';
 
 interface CurrencyExchangeProps {

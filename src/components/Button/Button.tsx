@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import {COLORS} from '../constants/Theme';
+import {COLORS} from '../../constants/Theme';
 
 function getColorSelector(activeColor: string, inactiveColor: string) {
     return (props: StyledButtonProps) => props.active ? activeColor : inactiveColor;

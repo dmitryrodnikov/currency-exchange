@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button Render snapshots are equal 1`] = `
+<div
+  class="sc-bdVaJa gMmIAm"
+>
+  Text
+</div>
+`;
+
+exports[`Button Shallow render snapshots are equal 1`] = `
+<styled.div
+  active={true}
+  onClick={[Function]}
+>
+  Text
+</styled.div>
+`;
