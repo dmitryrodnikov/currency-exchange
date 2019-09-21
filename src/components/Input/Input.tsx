@@ -25,15 +25,6 @@ const StyledInput = styled(NumberFormat)`
     font-weight: bold;
     transition: 300ms background-color;
     
-    /* Remove input controls in Webkit browsers */
-    &::-webkit-inner-spin-button,
-    &::-webkit-outer-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-    }
-    /* Remove input controls in Firefox */
-    -moz-appearance:textfield;
-    
     &:hover,
     &:focus {
         background-color: ${COLORS.green}10;
