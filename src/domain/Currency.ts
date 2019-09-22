@@ -4,4 +4,10 @@ export enum Currency {
     GBP = 'GBP',
 }
 
+export const CurrencySymbol = {
+    [Currency.USD]: '\u0024',
+    [Currency.EUR]: '\u20AC',
+    [Currency.GBP]: '\u00A3'
+};
+
 export const Currencies = Object.keys(Currency);
