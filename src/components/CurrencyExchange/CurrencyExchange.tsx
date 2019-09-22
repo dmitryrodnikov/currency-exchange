@@ -44,7 +44,7 @@ const InfoBlock = styled.div`
     overflow: hidden;
     color: #00000080;
     font-size: 14px;
-    margin-top: 6px;
+    margin: 6px 8px 0 0;
 `;
 
 const ExchangeBlock = styled.div`
@@ -74,7 +74,7 @@ export function CurrencyExchange(
         onChangeCurrencyTo,
     }: CurrencyExchangeProps
 ) {
-    const toExchangeRateFormatted = `1${toCurrency} = ${toExchangeRate}${fromCurrency}`;
+    const toExchangeRateFormatted = `${CurrencySymbol[toCurrency]}1 = ${CurrencySymbol[fromCurrency]}${toExchangeRate}`;
     const getFormattedBalance = (amount: number, currency: Currency) => `You have ${CurrencySymbol[currency]}${amount}`;
     const toBalanceFormatted = getFormattedBalance(toBalance, toCurrency);
     const fromBalanceFormatted = getFormattedBalance(fromBalance, fromCurrency);
