@@ -4,6 +4,8 @@ export enum Currency {
     GBP = 'GBP',
 }
 
+export type CurrencyRates = Record<Currency, number>;
+
 export const CurrencySymbol = {
     [Currency.USD]: '\u0024',
     [Currency.EUR]: '\u20AC',

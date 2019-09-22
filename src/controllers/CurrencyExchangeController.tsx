@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {CurrencyExchange} from '../components/CurrencyExchange/CurrencyExchange';
-import {Currency} from '../domain/Currency';
+import {Currency, CurrencyRates} from '../domain/Currency';
 
 export class CurrencyExchangeController extends React.Component<CurrencyExchangeProps, CurrencyExchangeState> {
     public state: CurrencyExchangeState = {
@@ -83,7 +83,7 @@ interface CurrencyExchangeState {
 type CurrencyExchangeProps = CurrencyExchangeStateProps & CurrencyExchangeDispatchProps;
 
 export interface CurrencyExchangeStateProps {
-    currencyRates: Record<Currency, number>;
+    currencyRates: CurrencyRates;
     balance: Record<Currency, number>;
 }
 

@@ -1,5 +1,5 @@
 import {createAction} from 'redux-actions';
-import {Currency} from '../domain/Currency';
+import {CurrencyRates} from '../domain/Currency';
 
 export const CurrencyExchangeActions = {
     START_POLLING: 'START_POLLING',
@@ -10,5 +10,5 @@ export const startPollingAction = createAction(CurrencyExchangeActions.START_POL
 export const updateCurrenciesAction = createAction<UpdateCurrencyPayload>(CurrencyExchangeActions.UPDATE_CURRENCIES);
 
 export interface UpdateCurrencyPayload {
-    currencies: Record<Currency, number>;
+    currencies: CurrencyRates;
 }

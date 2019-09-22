@@ -1,4 +1,4 @@
-import {Currencies, Currency} from '../domain/Currency';
+import {Currencies, CurrencyRates} from '../domain/Currency';
 
 const ACCESS_KEY = process.env.REACT_APP_FIXER_ACCESS_KEY;
 const CURRENCY_PROVIDER_PATH = 'http://data.fixer.io/api/';
@@ -14,12 +14,10 @@ async function getLatestCurrencies(): Promise<CurrencyResponse> {
     return response.json();
 }
 
-type Rates = Record<Currency, number>;
-
 export interface CurrencyResponse {
     base: string;
     date: string;
-    rates: Rates;
+    rates: CurrencyRates;
     success: boolean;
     timestamp: number;
 }

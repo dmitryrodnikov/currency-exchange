@@ -1,8 +1,8 @@
-import {Currency} from '../domain/Currency';
+import {Currency, CurrencyRates} from '../domain/Currency';
 import {Action} from 'redux-actions';
 import {CurrencyExchangeActions, UpdateCurrencyPayload} from '../actions/currencyExchangeActions';
 
-export type CurrencyState = Record<Currency, number>;
+export type CurrencyState = CurrencyRates;
 
 const initialState = {
     [Currency.USD]: 0,
