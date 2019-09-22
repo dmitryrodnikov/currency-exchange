@@ -3,23 +3,19 @@ import {Dispatch} from 'redux';
 import {startPollingAction} from '../actions/currencyExchangeActions';
 import {
     CurrencyExchangeController,
-    CurrencyConverterDispatchProps,
-    CurrencyConverterStateProps
+    CurrencyExchangeDispatchProps,
+    CurrencyExchangeStateProps
 } from '../controllers/CurrencyExchangeController';
 import {rootState} from '../reducers/rootReducer';
-import {Currency} from '../domain/Currency';
 
-const mapStateToProps = ({currency}: rootState): CurrencyConverterStateProps => {
+const mapStateToProps = ({currency, balance}: rootState): CurrencyExchangeStateProps => {
     return {
-        currencyRates: {
-            [Currency.USD]: currency[Currency.USD],
-            [Currency.EUR]: currency[Currency.EUR],
-            [Currency.GBP]: currency[Currency.GBP],
-        }
+        currencyRates: currency,
+        balance,
     };
 };
 
-const mapDispatchToProps = (dispatch: Dispatch): CurrencyConverterDispatchProps => {
+const mapDispatchToProps = (dispatch: Dispatch): CurrencyExchangeDispatchProps => {
     return {
         startPolling: () => dispatch(startPollingAction())
     };

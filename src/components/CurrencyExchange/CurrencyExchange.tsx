@@ -2,13 +2,15 @@ import * as React from 'react';
 import styled from 'styled-components';
 import {Input, InputChangeHandler} from '../Input/Input';
 import {CurrencySelect} from '../CurrencySelect/CurrencySelect';
-import {Currency} from '../../domain/Currency';
+import {Currency, CurrencySymbol} from '../../domain/Currency';
 import {ButtonClickHandler} from '../Button/Button';
 import {Output} from '../Output/Output';
 
 interface CurrencyExchangeProps {
+    fromBalance: number;
     fromCurrency: Currency;
     fromAmount: string;
+    toBalance: number;
     toCurrency: Currency;
     toAmount: string;
     toExchangeRate: number;
@@ -26,9 +28,7 @@ const StyledCurrencyExchange = styled.div`
     box-shadow: 0 2px 4px #00000020, 0 4px 12px #00000010;
 `;
 
-const ExchangeBlock = styled.div`
-    display: flex;
-    align-items: center;
+const ExchangeBlockWrapper = styled.div`
     padding: 16px 12px;
     overflow: hidden;
     
@@ -37,61 +37,83 @@ const ExchangeBlock = styled.div`
     }
 `;
 
+const InfoBlock = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    color: #00000080;
+    font-size: 14px;
+    margin-top: 6px;
+`;
+
+const ExchangeBlock = styled.div`
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+`;
+
 const CurrencyAmount = styled.div`
     margin-left: 20px;
     width: 100%;
     overflow: hidden;
 `;
 
-const ExchangeRate = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding 0 16px;
-    color: #00000080;
-    font-size: 14px;
-`;
-
 export function CurrencyExchange(
     {
+        fromBalance,
+        fromCurrency,
         fromAmount,
+        toBalance,
+        toCurrency,
         toAmount,
+        toExchangeRate,
+        currencyList,
         onChangeAmount,
         onChangeCurrencyFrom,
         onChangeCurrencyTo,
-        currencyList,
-        fromCurrency,
-        toCurrency,
-        toExchangeRate,
     }: CurrencyExchangeProps
 ) {
     const toExchangeRateFormatted = `1${toCurrency} = ${toExchangeRate}${fromCurrency}`;
+    const getFormattedBalance = (amount: number, currency: Currency) => `You have ${CurrencySymbol[currency]}${amount}`;
+    const toBalanceFormatted = getFormattedBalance(toBalance, toCurrency);
+    const fromBalanceFormatted = getFormattedBalance(fromBalance, fromCurrency);
     return (
         <StyledCurrencyExchange>
-            <ExchangeBlock>
-                <CurrencySelect
-                    selected={fromCurrency}
-                    currencies={currencyList}
-                    onItemClick={onChangeCurrencyFrom}
-                />
-                <CurrencyAmount>
-                    <Input
-                        value={fromAmount}
-                        onChange={onChangeAmount}
+            <ExchangeBlockWrapper>
+                <ExchangeBlock>
+                    <CurrencySelect
+                        selected={fromCurrency}
+                        currencies={currencyList}
+                        onItemClick={onChangeCurrencyFrom}
                     />
-                </CurrencyAmount>
-            </ExchangeBlock>
-            <ExchangeBlock>
-                <CurrencySelect
-                    selected={toCurrency}
-                    currencies={currencyList}
-                    onItemClick={onChangeCurrencyTo}
-                />
-                <CurrencyAmount>
-                    <Output text={toAmount}/>
-                </CurrencyAmount>
-            </ExchangeBlock>
-            <ExchangeRate>{toExchangeRateFormatted}</ExchangeRate>
+                    <CurrencyAmount>
+                        <Input
+                            value={fromAmount}
+                            onChange={onChangeAmount}
+                        />
+                    </CurrencyAmount>
+                </ExchangeBlock>
+                <InfoBlock>
+                    <div>{fromBalanceFormatted}</div>
+                </InfoBlock>
+            </ExchangeBlockWrapper>
+            <ExchangeBlockWrapper>
+                <ExchangeBlock>
+                    <CurrencySelect
+                        selected={toCurrency}
+                        currencies={currencyList}
+                        onItemClick={onChangeCurrencyTo}
+                    />
+                    <CurrencyAmount>
+                        <Output text={toAmount}/>
+                    </CurrencyAmount>
+                </ExchangeBlock>
+                <InfoBlock>
+                    <div>{toBalanceFormatted}</div>
+                    <div>{toExchangeRateFormatted}</div>
+                </InfoBlock>
+            </ExchangeBlockWrapper>
         </StyledCurrencyExchange>
     );
 }

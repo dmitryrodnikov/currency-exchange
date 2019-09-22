@@ -2,8 +2,8 @@ import * as React from 'react';
 import {CurrencyExchange} from '../components/CurrencyExchange/CurrencyExchange';
 import {Currency} from '../domain/Currency';
 
-export class CurrencyExchangeController extends React.Component<CurrencyConverterProps, CurrencyConverterState> {
-    public state: CurrencyConverterState = {
+export class CurrencyExchangeController extends React.Component<CurrencyExchangeProps, CurrencyExchangeState> {
+    public state: CurrencyExchangeState = {
         fromAmount: 0,
         fromCurrency: Currency.USD,
         toAmount: 0,
@@ -15,7 +15,10 @@ export class CurrencyExchangeController extends React.Component<CurrencyConverte
     }
 
     public render(): React.ReactElement {
+        const {balance} = this.props;
         const {fromCurrency, toCurrency, fromAmount} = this.state;
+        const fromBalance = balance[fromCurrency];
+        const toBalance = balance[toCurrency];
         const fromExchangeRate = this.getExchangeRate(fromCurrency, toCurrency);
         const toExchangeRate = this.getExchangeRate(toCurrency, fromCurrency);
         const toAmount = fromExchangeRate * fromAmount;
@@ -25,8 +28,10 @@ export class CurrencyExchangeController extends React.Component<CurrencyConverte
 
         return (
             <CurrencyExchange
+                fromBalance={fromBalance}
                 fromCurrency={fromCurrency}
                 fromAmount={fromAmountFormatted}
+                toBalance={toBalance}
                 toCurrency={toCurrency}
                 toAmount={toAmountFormatted}
                 toExchangeRate={toExchangeRateFormatted}
@@ -68,19 +73,20 @@ export class CurrencyExchangeController extends React.Component<CurrencyConverte
     };
 }
 
-interface CurrencyConverterState {
+interface CurrencyExchangeState {
     fromAmount: number,
     fromCurrency: Currency,
     toAmount: number,
     toCurrency: Currency,
 }
 
-type CurrencyConverterProps = CurrencyConverterStateProps & CurrencyConverterDispatchProps;
+type CurrencyExchangeProps = CurrencyExchangeStateProps & CurrencyExchangeDispatchProps;
 
-export interface CurrencyConverterStateProps {
+export interface CurrencyExchangeStateProps {
     currencyRates: Record<Currency, number>;
+    balance: Record<Currency, number>;
 }
 
-export interface CurrencyConverterDispatchProps {
+export interface CurrencyExchangeDispatchProps {
     startPolling: Function;
 }
