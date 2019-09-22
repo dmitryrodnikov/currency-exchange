@@ -2,16 +2,17 @@
 
 exports[`Input Render snapshots are equal 1`] = `
 <input
-  class="sc-bdVaJa jxLHdN"
-  type="number"
-  value="Test"
+  class="sc-bdVaJa jSDdor"
+  type="text"
+  value=""
 />
 `;
 
 exports[`Input Shallow render snapshots are equal 1`] = `
-<styled.input
+<Styled(NumberFormat)
+  allowNegative={false}
+  decimalScale={2}
   onChange={[Function]}
-  type="number"
   value="Test"
 />
 `;

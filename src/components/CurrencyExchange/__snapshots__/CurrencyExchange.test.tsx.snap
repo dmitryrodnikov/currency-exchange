@@ -5,66 +5,91 @@ exports[`CurrencyExchange Render snapshots are equal 1`] = `
   class="sc-ifAKCX bcPcvD"
 >
   <div
-    class="sc-EHOje bgpvZG"
+    class="sc-EHOje RXNYV"
   >
     <div
-      class="sc-htpNat gDqwhI"
+      class="sc-gzVnrw jnOtFG"
     >
       <div
-        class="sc-bwzfXH jsrFJT"
+        class="sc-htpNat gDqwhI"
       >
-        USD
+        <div
+          class="sc-bwzfXH jsrFJT"
+        >
+          USD
+        </div>
+        <div
+          class="sc-bwzfXH bRAeMy"
+        >
+          GBP
+        </div>
+        <div
+          class="sc-bwzfXH bRAeMy"
+        >
+          EUR
+        </div>
       </div>
       <div
-        class="sc-bwzfXH bRAeMy"
+        class="sc-htoDjs gktCDC"
       >
-        GBP
-      </div>
-      <div
-        class="sc-bwzfXH bRAeMy"
-      >
-        EUR
+        <input
+          class="sc-bdVaJa jSDdor"
+          type="text"
+          value="100"
+        />
       </div>
     </div>
     <div
-      class="sc-bZQynM iSrloL"
+      class="sc-bZQynM jnNfil"
     >
-      <input
-        class="sc-bdVaJa jxLHdN"
-        type="number"
-        value="100"
-      />
+      <div>
+        You have $undefined
+      </div>
     </div>
   </div>
   <div
-    class="sc-EHOje bgpvZG"
+    class="sc-EHOje RXNYV"
   >
     <div
-      class="sc-htpNat gDqwhI"
+      class="sc-gzVnrw jnOtFG"
     >
       <div
-        class="sc-bwzfXH bRAeMy"
+        class="sc-htpNat gDqwhI"
       >
-        USD
+        <div
+          class="sc-bwzfXH bRAeMy"
+        >
+          USD
+        </div>
+        <div
+          class="sc-bwzfXH bRAeMy"
+        >
+          GBP
+        </div>
+        <div
+          class="sc-bwzfXH jsrFJT"
+        >
+          EUR
+        </div>
       </div>
       <div
-        class="sc-bwzfXH bRAeMy"
+        class="sc-htoDjs gktCDC"
       >
-        GBP
-      </div>
-      <div
-        class="sc-bwzfXH jsrFJT"
-      >
-        EUR
+        <div
+          class="sc-bxivhb hIASvP"
+        >
+          80
+        </div>
       </div>
     </div>
     <div
-      class="sc-bZQynM iSrloL"
+      class="sc-bZQynM jnNfil"
     >
-      <div
-        class="sc-bxivhb hIASvP"
-      >
-        80
+      <div>
+        You have €undefined
+      </div>
+      <div>
+        €1 = $undefined
       </div>
     </div>
   </div>
@@ -74,40 +99,57 @@ exports[`CurrencyExchange Render snapshots are equal 1`] = `
 exports[`CurrencyExchange Shallow render snapshots are equal 1`] = `
 <styled.div>
   <styled.div>
-    <CurrencySelect
-      currencies={
-        Array [
-          "USD",
-          "GBP",
-          "EUR",
-        ]
-      }
-      onItemClick={[Function]}
-      selected="USD"
-    />
     <styled.div>
-      <Input
-        onChange={[Function]}
-        value="100"
+      <CurrencySelect
+        currencies={
+          Array [
+            "USD",
+            "GBP",
+            "EUR",
+          ]
+        }
+        onItemClick={[Function]}
+        selected="USD"
       />
+      <styled.div>
+        <Input
+          onChange={[Function]}
+          value="100"
+        />
+      </styled.div>
+    </styled.div>
+    <styled.div>
+      <div>
+        You have $undefined
+      </div>
     </styled.div>
   </styled.div>
   <styled.div>
-    <CurrencySelect
-      currencies={
-        Array [
-          "USD",
-          "GBP",
-          "EUR",
-        ]
-      }
-      onItemClick={[Function]}
-      selected="EUR"
-    />
     <styled.div>
-      <Output
-        text="80"
+      <CurrencySelect
+        currencies={
+          Array [
+            "USD",
+            "GBP",
+            "EUR",
+          ]
+        }
+        onItemClick={[Function]}
+        selected="EUR"
       />
+      <styled.div>
+        <Output
+          text="80"
+        />
+      </styled.div>
+    </styled.div>
+    <styled.div>
+      <div>
+        You have €undefined
+      </div>
+      <div>
+        €1 = $undefined
+      </div>
     </styled.div>
   </styled.div>
 </styled.div>
