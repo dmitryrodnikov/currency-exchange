@@ -7,13 +7,13 @@ import {ButtonClickHandler} from '../Button/Button';
 import {Output} from '../Output/Output';
 
 interface CurrencyExchangeProps {
-    fromBalance: number;
+    fromBalance: string;
     fromCurrency: Currency;
     fromAmount: string;
-    toBalance: number;
+    toBalance: string;
     toCurrency: Currency;
     toAmount: string;
-    toExchangeRate: number;
+    toExchangeRate: string;
     onChangeAmount: InputChangeHandler,
     onChangeCurrencyFrom: ButtonClickHandler<Currency>;
     onChangeCurrencyTo: ButtonClickHandler<Currency>;
@@ -93,7 +93,7 @@ export function CurrencyExchange(
     }: CurrencyExchangeProps
 ) {
     const toExchangeRateFormatted = `${CurrencySymbol[toCurrency]}1 = ${CurrencySymbol[fromCurrency]}${toExchangeRate}`;
-    const getFormattedBalance = (amount: number, currency: Currency) => `You have ${CurrencySymbol[currency]}${amount}`;
+    const getFormattedBalance = (amount: string, currency: Currency) => `You have ${CurrencySymbol[currency]}${amount}`;
     const toBalanceFormatted = getFormattedBalance(toBalance, toCurrency);
     const fromBalanceFormatted = getFormattedBalance(fromBalance, fromCurrency);
     return (

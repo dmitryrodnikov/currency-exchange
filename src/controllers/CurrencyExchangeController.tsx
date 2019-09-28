@@ -4,6 +4,10 @@ import {Currency, CurrencyRates} from '../domain/Currency';
 import {BalanceUpdatePayload, BALANCE_OPERATION} from '../actions/balanceActions';
 
 export class CurrencyExchangeController extends React.Component<CurrencyExchangeProps, CurrencyExchangeState> {
+    private static formatAmount(value: number): string {
+        return String(Math.floor(value * 100) / 100);
+    }
+
     public state: CurrencyExchangeState = {
         fromAmount: 0,
         fromCurrency: Currency.USD,
@@ -17,12 +21,13 @@ export class CurrencyExchangeController extends React.Component<CurrencyExchange
 
     public render(): React.ReactElement {
         const {balance} = this.props;
+        const {formatAmount} = CurrencyExchangeController;
         const {fromCurrency, toCurrency, fromAmount, toAmount} = this.state;
-        const fromBalance = balance[fromCurrency];
-        const toBalance = balance[toCurrency];
+        const fromBalance = formatAmount(balance[fromCurrency]);
+        const toBalance = formatAmount(balance[toCurrency]);
         const toExchangeRate = this.getExchangeRate(toCurrency, fromCurrency);
-        const toAmountFormatted = String(Math.floor(toAmount * 100) / 100);
-        const toExchangeRateFormatted = Math.floor(toExchangeRate * 100) / 100;
+        const toAmountFormatted = formatAmount(toAmount);
+        const toExchangeRateFormatted = formatAmount(toExchangeRate);
         const fromAmountFormatted = String(fromAmount);
 
         return (
