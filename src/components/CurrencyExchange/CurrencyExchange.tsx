@@ -5,6 +5,7 @@ import {CurrencySelect} from '../CurrencySelect/CurrencySelect';
 import {Currency, CurrencySymbol} from '../../domain/Currency';
 import {ButtonClickHandler} from '../Button/Button';
 import {Output} from '../Output/Output';
+import {ButtonAction} from '../ButtonAction/ButtonAction';
 
 interface CurrencyExchangeProps {
     fromBalance: string;
@@ -14,11 +15,12 @@ interface CurrencyExchangeProps {
     toCurrency: Currency;
     toAmount: string;
     toExchangeRate: string;
-    onChangeAmount: InputChangeHandler,
+    onChangeAmount: InputChangeHandler;
     onChangeCurrencyFrom: ButtonClickHandler<Currency>;
     onChangeCurrencyTo: ButtonClickHandler<Currency>;
     onClickExchangeButton: VoidFunction;
-    currencyList: Currency[]
+    currencyList: Currency[];
+    isButtonDisabled: boolean;
 }
 
 const StyledCurrencyExchange = styled.div`
@@ -65,17 +67,6 @@ const ExchangeButtonWrapper = styled.div`
     justify-content: flex-end;
 `;
 
-const ExchangeButton = styled.div`
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 8px 12px;
-    color: #fff;
-    background: #1200ff;
-    border-radius: 8px;
-    cursor: pointer;
-`;
-
 export function CurrencyExchange(
     {
         fromBalance,
@@ -90,6 +81,7 @@ export function CurrencyExchange(
         onChangeCurrencyFrom,
         onChangeCurrencyTo,
         onClickExchangeButton,
+        isButtonDisabled,
     }: CurrencyExchangeProps
 ) {
     const toExchangeRateFormatted = `${CurrencySymbol[toCurrency]}1 = ${CurrencySymbol[fromCurrency]}${toExchangeRate}`;
@@ -133,9 +125,11 @@ export function CurrencyExchange(
                 </InfoBlock>
             </ExchangeBlockWrapper>
             <ExchangeButtonWrapper>
-                <ExchangeButton onClick={onClickExchangeButton}>
-                    Exchange
-                </ExchangeButton>
+                <ButtonAction
+                    text='Exchange'
+                    disabled={isButtonDisabled}
+                    onClick={onClickExchangeButton}
+                />
             </ExchangeButtonWrapper>
         </StyledCurrencyExchange>
     );

@@ -2,13 +2,13 @@
 
 exports[`CurrencyExchange Render snapshots are equal 1`] = `
 <div
-  class="sc-ifAKCX bcPcvD"
+  class="sc-EHOje dpbDwl"
 >
   <div
-    class="sc-EHOje RXNYV"
+    class="sc-bZQynM FDrgQ"
   >
     <div
-      class="sc-gzVnrw jnOtFG"
+      class="sc-htoDjs laJnZW"
     >
       <div
         class="sc-htpNat gDqwhI"
@@ -30,7 +30,7 @@ exports[`CurrencyExchange Render snapshots are equal 1`] = `
         </div>
       </div>
       <div
-        class="sc-htoDjs gktCDC"
+        class="sc-dnqmqq gaxCGf"
       >
         <input
           class="sc-bdVaJa jSDdor"
@@ -40,7 +40,7 @@ exports[`CurrencyExchange Render snapshots are equal 1`] = `
       </div>
     </div>
     <div
-      class="sc-bZQynM jnNfil"
+      class="sc-gzVnrw eerDCD"
     >
       <div>
         You have $undefined
@@ -48,10 +48,10 @@ exports[`CurrencyExchange Render snapshots are equal 1`] = `
     </div>
   </div>
   <div
-    class="sc-EHOje RXNYV"
+    class="sc-bZQynM FDrgQ"
   >
     <div
-      class="sc-gzVnrw jnOtFG"
+      class="sc-htoDjs laJnZW"
     >
       <div
         class="sc-htpNat gDqwhI"
@@ -73,7 +73,7 @@ exports[`CurrencyExchange Render snapshots are equal 1`] = `
         </div>
       </div>
       <div
-        class="sc-htoDjs gktCDC"
+        class="sc-dnqmqq gaxCGf"
       >
         <div
           class="sc-bxivhb hIASvP"
@@ -83,7 +83,7 @@ exports[`CurrencyExchange Render snapshots are equal 1`] = `
       </div>
     </div>
     <div
-      class="sc-bZQynM jnNfil"
+      class="sc-gzVnrw eerDCD"
     >
       <div>
         You have €undefined
@@ -91,6 +91,15 @@ exports[`CurrencyExchange Render snapshots are equal 1`] = `
       <div>
         €1 = $undefined
       </div>
+    </div>
+  </div>
+  <div
+    class="sc-iwsKbI knUUUn"
+  >
+    <div
+      class="sc-ifAKCX khAnvJ"
+    >
+      Exchange
     </div>
   </div>
 </div>
@@ -151,6 +160,11 @@ exports[`CurrencyExchange Shallow render snapshots are equal 1`] = `
         €1 = $undefined
       </div>
     </styled.div>
+  </styled.div>
+  <styled.div>
+    <ButtonAction
+      text="Exchange"
+    />
   </styled.div>
 </styled.div>
 `;

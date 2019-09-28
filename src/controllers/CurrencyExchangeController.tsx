@@ -44,6 +44,7 @@ export class CurrencyExchangeController extends React.Component<CurrencyExchange
                 onChangeCurrencyFrom={this.changeCurrencyFrom}
                 onChangeCurrencyTo={this.changeCurrencyTo}
                 onClickExchangeButton={this.onClickExchange}
+                isButtonDisabled={this.isButtonDisabled()}
             />
         );
     }
@@ -114,6 +115,11 @@ export class CurrencyExchangeController extends React.Component<CurrencyExchange
             fromAmount: 0,
         });
     };
+
+    private isButtonDisabled(): boolean {
+        const {toCurrency, fromCurrency, fromAmount} = this.state;
+        return toCurrency === fromCurrency || fromAmount === 0;
+    }
 }
 
 interface CurrencyExchangeState {
