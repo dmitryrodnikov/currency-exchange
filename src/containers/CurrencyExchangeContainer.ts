@@ -7,6 +7,7 @@ import {
     CurrencyExchangeStateProps
 } from '../controllers/CurrencyExchangeController';
 import {rootState} from '../reducers/rootReducer';
+import {balanceUpdateAction, BalanceUpdatePayload} from '../actions/balanceActions';
 
 const mapStateToProps = ({currency, balance}: rootState): CurrencyExchangeStateProps => {
     return {
@@ -17,7 +18,8 @@ const mapStateToProps = ({currency, balance}: rootState): CurrencyExchangeStateP
 
 const mapDispatchToProps = (dispatch: Dispatch): CurrencyExchangeDispatchProps => {
     return {
-        startPolling: () => dispatch(startPollingAction())
+        startPolling: () => dispatch(startPollingAction()),
+        exchange: (payload: BalanceUpdatePayload) => dispatch(balanceUpdateAction(payload)),
     };
 };
 

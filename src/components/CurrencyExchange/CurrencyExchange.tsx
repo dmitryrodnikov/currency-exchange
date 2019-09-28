@@ -17,6 +17,7 @@ interface CurrencyExchangeProps {
     onChangeAmount: InputChangeHandler,
     onChangeCurrencyFrom: ButtonClickHandler<Currency>;
     onChangeCurrencyTo: ButtonClickHandler<Currency>;
+    onClickExchangeButton: VoidFunction;
     currencyList: Currency[]
 }
 
@@ -59,6 +60,22 @@ const CurrencyAmount = styled.div`
     overflow: hidden;
 `;
 
+const ExchangeButtonWrapper = styled.div`
+    display: flex;
+    justify-content: flex-end;
+`;
+
+const ExchangeButton = styled.div`
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+    color: #fff;
+    background: #1200ff;
+    border-radius: 8px;
+    cursor: pointer;
+`;
+
 export function CurrencyExchange(
     {
         fromBalance,
@@ -72,6 +89,7 @@ export function CurrencyExchange(
         onChangeAmount,
         onChangeCurrencyFrom,
         onChangeCurrencyTo,
+        onClickExchangeButton,
     }: CurrencyExchangeProps
 ) {
     const toExchangeRateFormatted = `${CurrencySymbol[toCurrency]}1 = ${CurrencySymbol[fromCurrency]}${toExchangeRate}`;
@@ -114,6 +132,11 @@ export function CurrencyExchange(
                     <div>{toExchangeRateFormatted}</div>
                 </InfoBlock>
             </ExchangeBlockWrapper>
+            <ExchangeButtonWrapper>
+                <ExchangeButton onClick={onClickExchangeButton}>
+                    Exchange
+                </ExchangeButton>
+            </ExchangeButtonWrapper>
         </StyledCurrencyExchange>
     );
 }

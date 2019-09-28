@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {CurrencyExchange} from '../components/CurrencyExchange/CurrencyExchange';
 import {Currency, CurrencyRates} from '../domain/Currency';
+import {BalanceUpdatePayload, BALANCE_OPERATION} from '../actions/balanceActions';
 
 export class CurrencyExchangeController extends React.Component<CurrencyExchangeProps, CurrencyExchangeState> {
     public state: CurrencyExchangeState = {
@@ -16,12 +17,10 @@ export class CurrencyExchangeController extends React.Component<CurrencyExchange
 
     public render(): React.ReactElement {
         const {balance} = this.props;
-        const {fromCurrency, toCurrency, fromAmount} = this.state;
+        const {fromCurrency, toCurrency, fromAmount, toAmount} = this.state;
         const fromBalance = balance[fromCurrency];
         const toBalance = balance[toCurrency];
-        const fromExchangeRate = this.getExchangeRate(fromCurrency, toCurrency);
         const toExchangeRate = this.getExchangeRate(toCurrency, fromCurrency);
-        const toAmount = fromExchangeRate * fromAmount;
         const toAmountFormatted = String(Math.floor(toAmount * 100) / 100);
         const toExchangeRateFormatted = Math.floor(toExchangeRate * 100) / 100;
         const fromAmountFormatted = String(fromAmount);
@@ -39,6 +38,7 @@ export class CurrencyExchangeController extends React.Component<CurrencyExchange
                 onChangeAmount={this.onChangeAmount}
                 onChangeCurrencyFrom={this.changeCurrencyFrom}
                 onChangeCurrencyTo={this.changeCurrencyTo}
+                onClickExchangeButton={this.onClickExchange}
             />
         );
     }
@@ -57,19 +57,57 @@ export class CurrencyExchangeController extends React.Component<CurrencyExchange
     }
 
     private changeCurrencyFrom = (currency: Currency) => {
-        this.setState({fromCurrency: currency});
+        this.setState({
+            fromCurrency: currency,
+            toAmount: this.calculateToAmount(currency, this.state.toCurrency, this.state.fromAmount),
+        });
     };
 
     private changeCurrencyTo = (currency: Currency) => {
-        this.setState({toCurrency: currency});
+        this.setState({
+            toCurrency: currency,
+            toAmount: this.calculateToAmount(this.state.fromCurrency, currency, this.state.fromAmount),
+        });
     };
 
     private getCurrencyList() {
         return Object.keys(this.props.currencyRates) as Currency[];
     }
 
-    private onChangeAmount = (value: number) => {
-        this.setState({fromAmount: value});
+    private onChangeAmount = (fromAmount: number) => {
+        this.setState({
+            fromAmount,
+            toAmount: this.calculateToAmount(this.state.fromCurrency, this.state.toCurrency, fromAmount),
+        });
+    };
+
+    private calculateToAmount(
+        fromCurrency: Currency,
+        toCurrency: Currency,
+        fromAmount: number
+    ) {
+        const fromExchangeRate = this.getExchangeRate(fromCurrency, toCurrency);
+        return fromExchangeRate * fromAmount;
+    }
+
+    private onClickExchange = () => {
+        this.props.exchange([
+            {
+                currency: this.state.fromCurrency,
+                amount: this.state.fromAmount,
+                operation: BALANCE_OPERATION.SUBTRACT,
+            },
+            {
+                currency: this.state.toCurrency,
+                amount: this.state.toAmount,
+                operation: BALANCE_OPERATION.ADD,
+            }
+        ]);
+        // Reset after exchange
+        this.setState({
+            toAmount: 0,
+            fromAmount: 0,
+        });
     };
 }
 
@@ -89,4 +127,5 @@ export interface CurrencyExchangeStateProps {
 
 export interface CurrencyExchangeDispatchProps {
     startPolling: Function;
+    exchange: (payload: BalanceUpdatePayload) => void;
 }
