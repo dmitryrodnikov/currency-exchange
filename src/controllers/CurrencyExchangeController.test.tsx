@@ -64,6 +64,13 @@ describe('CurrencyExchangeController', () => {
         expect(exchangeButton.prop('disabled')).toBe(false);
     });
 
+    it('Exchange button disables if input value bigger than balance', () => {
+        const input = wrapper.find('input');
+        changeInputValue(input, '150');
+        const exchangeButton = wrapper.find('ButtonAction div');
+        expect(exchangeButton.prop('disabled')).toBe(true);
+    });
+
     it('Exchange callback fires once on click with exact arguments', () => {
         const input = wrapper.find('input');
         changeInputValue(input, '100');

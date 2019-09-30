@@ -118,7 +118,9 @@ export class CurrencyExchangeController extends React.Component<CurrencyExchange
 
     private isButtonDisabled(): boolean {
         const {toCurrency, fromCurrency, fromAmount} = this.state;
-        return toCurrency === fromCurrency || fromAmount === 0;
+        const {balance} = this.props;
+        const fromBalance = balance[fromCurrency];
+        return toCurrency === fromCurrency || fromAmount === 0 || fromBalance < fromAmount;
     }
 }
 
